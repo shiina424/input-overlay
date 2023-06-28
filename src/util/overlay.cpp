@@ -1,6 +1,6 @@
 /*************************************************************************
  * This file is part of input-overlay
- * github.con/univrsal/input-overlay
+ * git.vrsal.xyz/alex/input-overlay
  * Copyright 2023 univrsal <uni@vrsal.xyz>.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -211,7 +211,7 @@ void overlay::refresh_data()
 
         if (m_settings->gamepad) {
             m_settings->gamepad->mutex().lock();
-            m_settings->gamepad->copy_data(&m_settings->data);
+            m_settings->gamepad->copy_data(&m_settings->data, m_settings->gamepad_index);
             m_settings->gamepad->mutex().unlock();
         }
         local_data::data.m_mutex.unlock();

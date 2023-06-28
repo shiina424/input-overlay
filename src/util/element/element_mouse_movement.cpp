@@ -1,6 +1,6 @@
 /*************************************************************************
  * This file is part of input-overlay
- * github.con/univrsal/input-overlay
+ * git.vrsal.xyz/alex/input-overlay
  * Copyright 2023 univrsal <uni@vrsal.xyz>.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -91,6 +91,8 @@ void element_mouse_movement::get_mouse_offset(sources::overlay_settings *setting
         if (abs(d_y) < settings->mouse_deadzone)
             d_y = 0;
     }
+
+    assert(settings->mouse_sens > 0);
 
     const auto factor_x = UTIL_CLAMP(-1, ((double)d_x / settings->mouse_sens), 1);
     const auto factor_y = UTIL_CLAMP(-1, ((double)d_y / settings->mouse_sens), 1);

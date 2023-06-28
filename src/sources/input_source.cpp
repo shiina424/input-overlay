@@ -1,6 +1,6 @@
 /*************************************************************************
  * This file is part of input-overlay
- * github.con/univrsal/input-overlay
+ * git.vrsal.xyz/alex/input-overlay
  * Copyright 2023 univrsal <uni@vrsal.xyz>.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -73,7 +73,7 @@ inline void input_source::update(obs_data_t *settings)
             m_settings.remote_input_data = data->second;
     }
 
-    m_settings.mouse_sens = obs_data_get_int(settings, S_MOUSE_SENS);
+    m_settings.mouse_sens = std::max<uint16_t>(obs_data_get_int(settings, S_MOUSE_SENS), 1);
 
     if ((m_settings.use_center = obs_data_get_bool(settings, S_MONITOR_USE_CENTER))) {
         m_settings.monitor_h = obs_data_get_int(settings, S_MONITOR_H_CENTER);
