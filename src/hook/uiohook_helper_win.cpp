@@ -69,15 +69,16 @@ DWORD WINAPI hook_thread_proc(const LPVOID arg)
 }
 
 extern "C" {
-static void logger_proc(unsigned int level, void *, const char *format, va_list args)
+static void logger_proc(unsigned int level, void *user_data, const char *format, va_list args)
 {
     switch (level) {
-    default:
     case LOG_LEVEL_INFO:
+        blogva(LOG_INFO, "[input-overlay::uiohook]", args);
+        break;
     case LOG_LEVEL_WARN:
     case LOG_LEVEL_ERROR:
-        blogva(LOG_WARNING, format, args);
-        break;
+        blogva(LOG_WARNING, "[input-overlay::uiohook]", args);
+    default:;
     }
 }
 }
