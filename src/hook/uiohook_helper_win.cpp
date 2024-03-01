@@ -72,17 +72,13 @@ extern "C" {
 static void logger_proc(unsigned int level, void *, const char *format, va_list args)
 {
     switch (level) {
-    default:
-    case LOG_LEVEL_DEBUG:
-        blogva(LOG_INFO, format, args);
-        break;
     case LOG_LEVEL_INFO:
         blogva(LOG_INFO, format, args);
         break;
     case LOG_LEVEL_WARN:
     case LOG_LEVEL_ERROR:
         blogva(LOG_WARNING, format, args);
-        break;
+    default:;
     }
 }
 }
