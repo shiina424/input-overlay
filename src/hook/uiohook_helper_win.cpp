@@ -73,9 +73,8 @@ static void logger_proc(unsigned int level, void *, const char *format, va_list 
 {
     switch (level) {
     default:
-    case LOG_LEVEL_DEBUG:
     case LOG_LEVEL_INFO:
-        blogva(LOG_DEBUG, format, args);
+        blogva(LOG_INFO, format, args);
         break;
     case LOG_LEVEL_WARN:
     case LOG_LEVEL_ERROR:
